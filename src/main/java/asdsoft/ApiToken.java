@@ -130,4 +130,17 @@ public class ApiToken {
         }
         return false;
     }
+    public static int getUserId(String token){
+        TokenInfo t = verifyToken(token);
+        try {
+
+            if (t.getExpires().isAfter(t.getIssued())) {
+                return Integer.valueOf(t.getUserId());
+            }
+        }
+        catch (Exception e) {
+
+        }
+        return 0;
+    }
 }

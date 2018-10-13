@@ -5,6 +5,7 @@ import com.mysql.cj.protocol.Resultset;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
+import java.util.ArrayList;
 
 import static asdsoft.ApiToken.createJsonWebToken;
 
@@ -42,7 +43,7 @@ public class DataBase {
                 ld.setContact(rs.getString("contact"));
                 ld.setEmail(rs.getString("email"));
                 ld.setRating(rs.getInt("rating"));
-                ld.setToken(createJsonWebToken(ld.getUsername(),(long)3));
+                ld.setToken(createJsonWebToken(rs.getString("ID"),(long)3));
                 return ld;
             }
             ld.setToken("-1");
@@ -58,6 +59,38 @@ public class DataBase {
         ld.setToken("-2");
         return ld;
     }
+    public ArrayList<SyncData> dayFetch(){
+        ArrayList<SyncData> syncDataArrayList;
+        ArrayList<Integer> idList = new ArrayList<>();
+        syncDataArrayList = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM records WHERE callisdone = 0 ORDER BY priority DESC LIMIT 15 ";
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                SyncData syncData = new SyncData();
+                syncData.setCust_id(rs.getString("cust_id"));
+                syncData.setFirst_name(rs.getString("first_name"));
+                syncData.setLast_name(rs.getString("last_name"));
+                syncData.setPhone("0" + rs.getString("pnumber").trim());
+                syncData.setVehical_number(rs.getString("vehicle_number"));
+                syncData.setModel(rs.getString("model"));
+                syncData.setService_id(rs.getString("service_id"));
+                syncData.setL_service(rs.getString("date_of_service"));
+                syncData.setN_service(rs.getString("next_date_of_service"));
+                syncData.setKms(rs.getInt("kms"));
+                syncDataArrayList.add(syncData);
+                idList.add(rs.getInt("service_id"));
+            }
+            updateData(idList);
+            return syncDataArrayList;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return syncDataArrayList;
+    }
     public void addUser(String uname, String pass){
         try {
             String sql = String.format("INSERT INTO `employee`(`username`, `password`, `first_name`, `last_name`, `dob`, `salary`, `contact`, `is_admin`, `rating`) VALUES ('%s', '%s' , '%s', '%s', '%s', '%s', '%s', %d, %d)", uname,
@@ -66,6 +99,46 @@ public class DataBase {
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void submitData(String time, String Date, int a1, int a2, int a3, int a4, int a5, int a6, int cust_rat, int cust_id, int service_id, int emp_id ){
+        try {
+            String sql = String.format("INSERT INTO submit(cust_id, emp_id, service_id, a1, a2, a3, a4, a5, a6, cust_rating, dateofcall, time) VALUES " +
+                    "(%d, %d , %d, %d, %d, %d, %d, %d, %d, %d, '%s', '%s')",cust_id ,emp_id , service_id, a1, a2, a3, a4, a5, a6, cust_rat, Date, time);
+            System.out.println(sql);
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            updatesddata(service_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateData(ArrayList<Integer> idList){
+        String out = "( ";
+        for(int i : idList){
+            out += String.valueOf(i) + ", ";
+
+        }
+        out += String.valueOf(idList.get(0)) + " )";
+
+        String sql = String.format("UPDATE service SET callisdone = 2 where service_id in %s", out);
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void updatesddata(int service_id){
+
+
+        String sql = String.format("UPDATE service SET callisdone = 1 where service_id = %d", service_id);
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
