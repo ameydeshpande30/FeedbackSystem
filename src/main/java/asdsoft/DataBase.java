@@ -102,6 +102,17 @@ public class DataBase {
             e.printStackTrace();
         }
     }
+    public void addUser2(String fname, String lname, String phone , String dob, int sal, String email,String uname, String pass){
+        try {
+            String sql = String.format("INSERT INTO `employee`(`username`, `password`, `first_name`, `last_name`, `dob`, `salary`, `contact`, `is_admin`, `rating`, `email`) VALUES ('%s', '%s' , '%s', '%s', '%s', '%s', '%s', %d, %d, '%s')", uname,
+                    PassHash.createHash(pass), fname, lname, dob, sal, phone, 0, 5, email);
+            System.out.println(sql);
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void submitData(String time, String Date, int a1, int a2, int a3, int a4, int a5, int a6, int cust_rat, int cust_id, int service_id, int emp_id ){
         try {
             String sql = String.format("INSERT INTO submit(cust_id, emp_id, service_id, a1, a2, a3, a4, a5, a6, cust_rating, dateofcall, time) VALUES " +
@@ -142,8 +153,122 @@ public class DataBase {
             e.printStackTrace();
         }
     }
+    public int a1(){
 
-    @Override
+        int a = 0;
+        String sql = String.format("select avg(a1) from submit;");
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                a = (int) rs.getFloat("avg(a1)");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+    public int a3(){
+
+        int a = 0;
+        String sql = String.format("select avg(a3) from submit;");
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                a = (int) rs.getFloat("avg(a3)");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+    public int a5(){
+
+        int a = 0;
+        String sql = String.format("select avg(a5) from submit;");
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                a = (int) rs.getFloat("avg(a5)");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+    public int a2(){
+
+        int a = 0;
+        String sql = String.format("select count(a2) from submit where a2=1;");
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                a = (int) rs.getInt("count(a2)");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+    public int a6(){
+
+        int a = 0;
+        String sql = String.format("select count(a6) from submit where a6=1;");
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                a = (int) rs.getInt("count(a6)");
+                System.out.println(a);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(a);
+        return a;
+    }
+    public int a4(){
+
+        int a = 0;
+        String sql = String.format("select count(a4) from submit where a4=1;");
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                a = (int) rs.getInt("count(a4)");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+    public int count(){
+
+        int a = 0;
+        String sql = String.format("select count(service_id) from submit;");
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                a = (int) rs.getInt("count(service_id)");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+
+        @Override
     protected void finalize() throws Throwable {
         conn.close();
     }

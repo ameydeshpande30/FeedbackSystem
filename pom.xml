@@ -22,6 +22,7 @@
 
 
     <dependencies>
+
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
@@ -32,7 +33,11 @@
             <artifactId>slf4j-jdk14</artifactId>
             <version>1.7.25</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-template-mustache</artifactId>
+            <version>2.7.1</version>
+        </dependency>
         <dependency>
             <groupId>com.googlecode.jsontoken</groupId>
             <artifactId>jsontoken</artifactId>
@@ -53,6 +58,7 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
+
 
     </dependencies>
 

@@ -15,13 +15,13 @@ import net.oauth.jsontoken.crypto.Verifier;
 import net.oauth.jsontoken.discovery.VerifierProvider;
 import net.oauth.jsontoken.discovery.VerifierProviders;
 import org.joda.time.DateTime;
+import spark.ModelAndView;
+import spark.template.mustache.MustacheTemplateEngine;
 import sun.rmi.runtime.Log;
 
 import java.security.InvalidKeyException;
 import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 import static asdsoft.ApiToken.createJsonWebToken;
 import static asdsoft.ApiToken.getUserId;
@@ -31,14 +31,23 @@ import static spark.Spark.*;
 public class Main {
     public static void main(String[] args) {
         port(8000);
+
+
+//        String keyStoreLocation = "/home/amey/IdeaProjects/feedback/src/keystore.jks";
+//        String keyStorePassword = "password";
+//        secure(keyStoreLocation, keyStorePassword, null, null);
+
+        staticFiles.location("/static");
         DataBase db = new DataBase();
         System.out.println("Now the output is redirected!");
-        get("/", (req, res) -> {
+        get("/asd", (req, res) -> {
             res.type("application/json");
-            LoginData ld = db.check("root","root");
-
+            db.addUser("root1","root1");
+            db.addUser("root2","root2");
+            db.addUser("root3","root3");
             Gson gson = new GsonBuilder().create();
-            return gson.toJson(ld);
+            //return gson.toJson(ld);
+            return "done";
             //System.out.println(PassHash.validatePassword("root","1000:bd417ce87a0050284e415254c0738a9fe1fbd9c543b770ab:6217d95786d75bd13df8b53502477c431804165d00a610b6"));
             //return createJsonWebToken("asd",(long)3);
         } );
@@ -146,9 +155,62 @@ public class Main {
             }
             return "ok";
         });
+        post("/adminSubmit",(req,res) -> {
+            String fname = req.queryParams("fname");
+            String lname = req.queryParams("lname");
+            String uname = req.queryParams("user");
+            String pass = req.queryParams("password");
+            String dob = req.queryParams("dob");
+            int salary = Integer.parseInt(req.queryParams("sal"));
+            String email = req.queryParams("email");
+            String phone = req.queryParams("no");
+            db.addUser2(fname,lname,phone,dob,salary,email,uname,pass);
+            return "done";
+        });
+        get("/newUser",(req,res) -> {
+            return new ModelAndView(null, "login.mustache"); // hello.mustache file is in resources/templates directory
+        }, new MustacheTemplateEngine());
+//        Map map = new HashMap();
+//        map.put("name", "Sam");
+//
+//        // hello.mustache file is in resources/templates directory
+//        get("/hello", (rq, rs) -> new ModelAndView(map, "login.mustache"), new MustacheTemplateEngine());
+//
+
+
+        get("/bi",(req,res) -> {
+            int count = db.count();
+            int a1 = db.a1()*20;
+            int a2= (db.a2()/count)*100;
+            int a3 = db.a3()*20;
+            int a4 = (db.a4()/count)*100;
+            int a5 = db.a5()*20;
+            int a6 = (db.a6());
+            a6 = a6*100;
+            a6 = a6/count;
+            System.out.println(a6);
+            Map map = new HashMap();
+            map.put("a1", a1);
+            map.put("a2", a2);
+            map.put("a3", a3);
+            map.put("a4", a4);
+            map.put("a5", a5);
+            map.put("a6", a6);
+            return new ModelAndView(map, "Statistics.mustache"); // hello.mustache file is in resources/templates directory
+        }, new MustacheTemplateEngine());
 
     }
 
 
 
 }
+
+//    select avg(a1) from submit;
+//    select avg(a2) from submit;
+//    select avg(a3) from submit;
+//
+//    select count(service_id) form submit;
+//
+//    select count(a2) from submit where a2=1;
+//        select count(a4) from submit where a4=1;
+//        select count(a6) from submit where a6=1;
