@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Feedback</title>
+  <!-- Favicon -->
+  <link href="img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <!-- Argon CSS -->
+  <link type="text/css" href="css/argon.css?v=1.0.1" rel="stylesheet">
+  <!-- Docs CSS -->
+ 	
+    <link rel="stylesheet" href="fstyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+
+  <style type="text/css">
+    
+      .navtop
+      {
+  	
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+      }
+      .navbot
+      {
+
+        
+        box-shadow: 0px 1px 20px rgba(0,0,0,0.8);
+      }
+
+      .ncc
+      {
+        border-radius:10px;
+        background-color:rgba(0,0,0,0.4);
+
+/*        box-shadow: 0px 5px 25px rgba(255,255,255,0.6);
+*/        cursor: pointer;
+
+
+      }
+      .btn
+      {
+        background-color: rgba(0,0,0,0);
+        color:black;
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.6);
+      }
+      .main1{
+        height: 90vh;
+      }
+      
+
+  </style>
+
+</head>
+
+<body>
+  
+  <nav class="navbar  bg-dark navtop py-0" >
+  
+    <div class="navbar-brand  ncc " style="padding: 6px 6px 2px 6px;">  <img src="navfeed.png" width="50" height="45" alt=""> </div>
+      <div style="font-size: 30px; position: absolute; left:10vh ;color: white" >FeedBack</div>
+      <a class="" href="/newUser" role="button" style="color: white;position: absolute;left: 35vh;">New Employee</a>
+ 
+    <a class="" href="/bi" role="button" style="color: white ;position: absolute;left: 55vh;">BI</a>
+ 
+    <button class="btn mr-2 border border-success logout " type="button" style="color: white;">Log Out</button>
+  
+</nav>
+   
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-2" style="">
+      </div>
+      <div class="col-lg-8  " style="background: inherit;">
+        <div class="mx-auto my-3  col-md-8 player" style="background: black;opacity: 0.9">
+          <form action="/adminSubmit" method="post">
+          
+          <div class="userhead">Employee</div>
+          
+          <div class="form-group mt-3 pt-1 pb-1 col" >
+             <div class="row">
+              <div class="col-lg-1">                 
+                 <i class="fa fa-user-circle pt-2" aria-hidden="true" style="font-size:30px;"></i>
+              </div>
+              <div class="col-lg-5">
+                 <input type="name" class="form-control" id="name" placeholder=" First Name" name="fname" required>
+              </div>
+             <div class="col-lg-1">             
+                      <i class="fa fa-user pt-2" style="font-size:30px;"></i>
+                  </div>
+                  <div class="col-lg-5"><input type="name" class="form-control" id="name" placeholder=" Last Name" name="lname" required></div>
+                
+                </div>
+            </div>
+            <div class="form-group col   pb-2">
+          
+              
+            <i class="fa fa-envelope" aria-hidden="true" style="font-size:30px;"></i>
+
+              <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email"  required>
+            </div>
+            <div class="form-group col   pb-2">
+            <i class="fa fa-birthday-cake" aria-hidden="true" style="font-size:30px;"></i>
+
+              <input class="datepicker"name="dob" data-date-format="yyyy-mm-dd">
+            </div>
+             <div class="form-group col   pb-2">
+
+                          <i class="fa fa-money"  style="font-size:30px;"></i>
+                <input type="text" class="form-control" id="sal" placeholder="Enter Salary" name="sal"  required>
+            </div>
+          <div class="form-group col pb-2">
+              
+                <i class="fa fa-phone" aria-hidden="true" style="font-size:30px;"></i>
+              <input type="contact" class="form-control" id="contact" placeholder="Enter Contact No." pattern = "[789][0-9]{9}" name="no"  required>
+            </div>
+
+            <div class="form-group col   pb-2">
+
+                <i class="fas fa-user-plus" aria-hidden="true" style="font-size:30px;"></i>
+                <input type="text" class="form-control" id="user" placeholder="Username" name="user"  required>
+            </div>
+             <div class="form-group col   pb-5">
+                <i class="fa fa-key" aria-hidden="true" style="font-size:30px;"></i>
+                <input type="password" class="form-control" id="pass" placeholder="Password" name="password"  required>
+            </div>
+      <button type="submit" class="btn  btn-success col-md-3 mx-auto" id="sub" style="position: absolute;bottom: 5vh ;left:18vh;color: white">ADD</button> 
+<!--         <div class="userbottom pt-4 mt-2" style="position: relative;top:3vh">-</div>
+ -->        </div>     
+   </div>
+      <div class="col-lg-2" style=""></div>
+    </div>
+  </div>
+  <!-- Core -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="vendor/headroom/headroom.min.js"></script>
+  <!-- Optional JS -->
+  <script src="vendor/onscreen/onscreen.min.js"></script>
+  <script src="vendor/nouislider/js/nouislider.min.js"></script>
+  <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <!-- Argon JS -->
+  <script src="js/argon.js?v=1.0.1"></script>
+</body>
+
+</html>
