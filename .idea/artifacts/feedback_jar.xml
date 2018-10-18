@@ -30,6 +30,10 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/eclipse/jetty/websocket/websocket-common/9.3.6.v20151106/websocket-common-9.3.6.v20151106.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/sparkjava/spark-template-mustache/2.7.1/spark-template-mustache-2.7.1.jar" path-in-jar="/" />
+      <element id="directory" name="res">
+        <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+      </element>
     </root>
   </artifact>
 </component>

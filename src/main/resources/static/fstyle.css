@@ -1,0 +1,222 @@
+
+
+body{
+     
+
+   	 background: linear-gradient(to bottom left, #33ccff 0%, #ff99cc 100%);	 height: 100%;
+	 width:100%;
+	 background-size:cover;	 
+	  
+
+}
+
+.navtop
+{
+
+	
+/*	box-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+*/}
+.navbot
+{
+
+	
+/*	box-shadow: 0px 1px 20px rgba(0,0,0,0.8);
+*/}
+
+
+
+.ncc
+{
+	border-radius:10px;
+	background-color:rgba(0,0,0,0.4);
+
+	cursor: pointer;
+
+
+}
+.timetop
+{
+	border-radius:20px;
+
+	cursor: pointer;
+	box-shadow: 3px 3px 20px rgba(0,0,0,0.6);
+}
+
+.nametop
+{
+	border-radius:20px;
+
+	cursor: pointer;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.6);
+}
+
+.name
+{
+	border-radius:10px;
+	background-color:rgba(0,0,0,0.2);
+	color:black;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+	cursor: pointer;
+	text-shadow: 1px 1px 10px white;
+	transition-duration: 0.5s;
+	
+	font-weight:bold;
+}
+
+.name1
+{
+	border-radius:10px;
+	background-color:rgba(0,0,0,0.6);
+	color:white;
+	box-shadow: 7px 2px 10px rgba(255,255,255,0.8);
+	cursor: pointer;
+	text-shadow: 4px 4px 10px black;
+	transition-duration: 0.5s;
+}
+
+thead th
+{
+
+	background-color:rgba(0,0,0,0.6);
+	color:white;
+
+	cursor: pointer;
+	text-shadow: 4px 4px 10px black;
+	
+
+	
+	
+}
+
+.btn
+{
+	background-color: rgba(0,0,0,0);
+	color:black;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.6);
+
+
+}
+
+.-table
+{
+	background-color: rgba(0,0,0,0);
+	color:black;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.6);
+
+	height:500px;
+
+}
+
+.btn:active {
+  
+  box-shadow: 0px 3px 5px rgba(0,0,0,0.6);
+  transform: translateY(6px);
+}
+
+
+
+
+
+
+
+.player
+{
+box-shadow: 0px 3px 5px rgba(0,0,0,0.6);
+
+border-radius: 10px;
+text-align: center;
+
+height: 90vh;
+width: 50vh;
+
+
+}
+.signup
+{
+	box-shadow: 0px 3px 5px rgba(0,0,0);
+
+border-radius: 10px;
+text-align: center;
+}
+
+
+
+
+
+ 
+
+.form-group input[type="email"] {
+  
+  border:1px solid rgba(0,0,0,1);
+  background:rgba(255,255,255,.8);
+  color:black;
+  font-size:18px;
+  border-radius:5px;
+box-shadow: 4px 4px 7px rgba(255,255,255,0.3);
+ 
+  
+}
+
+
+.form-group input[type="text"] {
+  
+  border:1px solid rgba(0,0,0,1);
+  background:rgba(255,255,255,.8);
+  color:black;
+  font-size:18px;
+  border-radius:5px;
+box-shadow: 4px 4px 7px rgba(255,255,255,0.1);
+}
+
+.form-group input[type="name"] {
+  
+  border:1px solid rgba(0,0,0,1);
+  background:rgba(255,255,255,.8);
+  color:black;
+  font-size:18px;
+  border-radius:5px;
+box-shadow: 4px 4px 7px rgba(255,255,255,0.1);
+}
+ .form-group input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:rgba(0,0,0,1);
+     /* Firefox */
+}
+
+.form-group input[type="contact"] {
+  
+  border:1px solid rgba(0,0,0,1);
+  background:rgba(255,255,255,.8);
+  color:black;
+ 
+  font-size:18px;
+  border-radius:5px;
+   box-shadow: 4px 4px 7px rgba(255,255,255,0.1);
+}
+
+
+
+.userhead{
+	font-size:25px;
+	background:rgba(0,0,0,.8);
+
+	color:white ;font-family:vera;
+	
+	
+	
+	border-radius:0px 0px 10px 10px;
+	box-shadow: 7px 7px 10px rgba(255,255,255,0.2);
+
+}
+.userbottom{
+	font-size:4px;
+	background:rgba(0,0,0,.8);
+
+	color:rgba(0,0,0,1) ;
+	font-family:vera;
+	
+	
+	
+	border-radius:10px 10px 0px 0px;
+	box-shadow: 7px 7px 10px rgba(255,255,255,0.1);
+
+}

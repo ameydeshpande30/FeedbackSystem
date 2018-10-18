@@ -181,9 +181,11 @@ public class Main {
         get("/bi",(req,res) -> {
             int count = db.count();
             int a1 = db.a1()*20;
-            int a2= (db.a2()/count)*100;
+            int a2= (db.a2())*100;
+            a2 = a2/count;
             int a3 = db.a3()*20;
-            int a4 = (db.a4()/count)*100;
+            int a4 = (db.a4())*100;
+            a4 = a4/count;
             int a5 = db.a5()*20;
             int a6 = (db.a6());
             a6 = a6*100;
