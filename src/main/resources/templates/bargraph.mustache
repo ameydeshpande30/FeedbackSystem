@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pure CSS horizontal bar chart with staggering animation</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <link rel="stylesheet" href="/css/style.css">
+
+  
+</head>
+
+<body style="overflow:hidden">
+
+  <div class="skills">
+  <ul class="lines">
+    <li class="line l--0">
+      <span class="line__label title">
+        Percentage:
+      </span>
+    </li>
+    <li class="line l--25">
+      <span class="line__label">
+        25%
+      </span>
+    </li>
+    <li class="line l--50">
+      <span class="line__label">
+        50%
+      </span>
+    </li>
+    <li class="line l--75">
+      <span class="line__label">
+        75%
+      </span>
+    </li>
+    <li class="line l--100">
+      <span class="line__label">
+        100%
+      </span>
+    </li>
+  </ul>
+  
+  <div class="charts">
+    <div class="chart chart--dev">
+      <span class="chart__title">Questions</span>
+      <ul class="chart--horiz">
+        <li class="chart__bar" style="width: {{ a1 }}%;">
+          <span class="chart__label">
+            QUALITY OF SERVICE
+          </span>
+        </li>
+        <li class="chart__bar" style="width: {{ a2 }}%;">
+          <span class="chart__label">
+            ON TIME DELIVERY
+          </span>
+        </li>
+        <li class="chart__bar" style="width: {{ a3 }}%;">
+          <span class="chart__label">
+            PERFORMANCE AFTER SERVICE
+          </span>
+        </li>
+        <li class="chart__bar" style="width: {{ a4 }}%;">
+          <span class="chart__label">
+            SATISFIED
+          </span>
+        </li>
+        <li class="chart__bar" style="width: {{ a5 }}%;">
+          <span class="chart__label">
+            ASSISTANCE PROVIDED BY ENGINEER
+          </span>
+        </li>
+        <li class="chart__bar" style="width: {{ a6 }}%;">
+          <span class="chart__label">
+            EXPRESS SERVICE
+          </span>
+        </li>
+       
+      </ul>
+    </div>
+    
+  
+    
+ 
+  </div>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
+
+  
+
+</body>
+
+</html>

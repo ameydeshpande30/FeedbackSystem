@@ -4,29 +4,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.sun.corba.se.spi.ior.ObjectId;
-import com.sun.deploy.util.StringUtils;
-import net.oauth.jsontoken.JsonToken;
-import net.oauth.jsontoken.JsonTokenParser;
-import net.oauth.jsontoken.crypto.HmacSHA256Signer;
-import net.oauth.jsontoken.crypto.HmacSHA256Verifier;
-import net.oauth.jsontoken.crypto.SignatureAlgorithm;
-import net.oauth.jsontoken.crypto.Verifier;
-import net.oauth.jsontoken.discovery.VerifierProvider;
-import net.oauth.jsontoken.discovery.VerifierProviders;
-import org.joda.time.DateTime;
 import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
-import sun.rmi.runtime.Log;
 
-import java.security.InvalidKeyException;
-import java.security.SignatureException;
 import java.util.*;
 
 import static asdsoft.ApiToken.createJsonWebToken;
 import static asdsoft.ApiToken.getUserId;
 import static asdsoft.ApiToken.checkToken;
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 import static spark.Spark.*;
 public class Main {
     public static void main(String[] args) {
@@ -70,8 +56,6 @@ public class Main {
             res.type("application/json");
             String uname = req.queryParams("uname");
             String passwd = req.queryParams("pass");
-            System.out.println(uname);
-            System.out.println(passwd);
             LoginData ld = db.check(uname,passwd);
             Gson gson = new GsonBuilder().create();
             return gson.toJson(ld);
@@ -150,7 +134,7 @@ public class Main {
                 String time = req.queryParams("time");
                 int cust_rat = Integer.valueOf(req.queryParams("cust_rat"));
                 db.submitData(time,date,a1,a2,a3,a4,a5,a6,cust_rat,cust_id,service_id,userid);
-                System.out.println(time + date + a1 + a2 + a3 +a4 +a5 +a6 + " " +cust_id + " " + cust_rat + " " + service_id + " " + userid);
+                //System.out.println(time + date + a1 + a2 + a3 +a4 +a5 +a6 + " " +cust_id + " " + cust_rat + " " + service_id + " " + userid);
 
             }
             return "ok";
@@ -176,6 +160,28 @@ public class Main {
 //        // hello.mustache file is in resources/templates directory
 //        get("/hello", (rq, rs) -> new ModelAndView(map, "login.mustache"), new MustacheTemplateEngine());
 //
+        get("/bi2",(req,res) -> {
+            int count = db.count();
+            int a1 = db.a1()*20;
+            int a2= (db.a2())*100;
+            a2 = a2/count;
+            int a3 = db.a3()*20;
+            int a4 = (db.a4())*100;
+            a4 = a4/count;
+            int a5 = db.a5()*20;
+            int a6 = (db.a6());
+            a6 = a6*100;
+            a6 = a6/count;
+            System.out.println(a6);
+            Map map = new HashMap();
+            map.put("a1", a1);
+            map.put("a2", a2);
+            map.put("a3", a3);
+            map.put("a4", a4);
+            map.put("a5", a5);
+            map.put("a6", a6);
+            return new ModelAndView(map, "bargraph.mustache"); // hello.mustache file is in resources/templates directory
+        }, new MustacheTemplateEngine());
 
 
         get("/bi",(req,res) -> {

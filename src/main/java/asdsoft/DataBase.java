@@ -12,7 +12,7 @@ import static asdsoft.ApiToken.createJsonWebToken;
 public class DataBase {
 
     // JDBC driver name and database URL
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+   // static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://db4free.net/sdl_project";
 
     //  Database credentials
@@ -43,7 +43,7 @@ public class DataBase {
                 ld.setContact(rs.getString("contact"));
                 ld.setEmail(rs.getString("email"));
                 ld.setRating(rs.getInt("rating"));
-                ld.setToken(createJsonWebToken(rs.getString("ID"),(long)3));
+                ld.setToken(createJsonWebToken(rs.getString("ID"),(long)1));
                 return ld;
             }
             ld.setToken("-1");
