@@ -74,7 +74,7 @@ public class DataBase {
                 syncData.setFirst_name(rs.getString("first_name"));
                 syncData.setLast_name(rs.getString("last_name"));
                 syncData.setPhone("0" + rs.getString("pnumber").trim());
-                syncData.setVehical_number(rs.getString("vehicle_number"));
+                syncData.setVehical_number(rs.getString("vehicle_number").toUpperCase());
                 syncData.setModel(rs.getString("model"));
                 syncData.setService_id(rs.getString("service_id"));
                 syncData.setL_service(rs.getString("date_of_service"));
