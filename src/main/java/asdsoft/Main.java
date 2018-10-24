@@ -26,18 +26,8 @@ public class Main {
         staticFiles.location("/static");
         DataBase db = new DataBase();
         System.out.println("Now the output is redirected!");
-        get("/asd", (req, res) -> {
-            res.type("application/json");
-            db.addUser("root1","root1");
-            db.addUser("root2","root2");
-            db.addUser("root3","root3");
-            Gson gson = new GsonBuilder().create();
-            //return gson.toJson(ld);
-            return "done";
-            //System.out.println(PassHash.validatePassword("root","1000:bd417ce87a0050284e415254c0738a9fe1fbd9c543b770ab:6217d95786d75bd13df8b53502477c431804165d00a610b6"));
-            //return createJsonWebToken("asd",(long)3);
-        } );
-        get("/profile",(req, res) -> {
+
+        get("/test",(req, res) -> {
             res.type("application/json");
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             JsonObject out = new JsonObject();
@@ -74,11 +64,7 @@ public class Main {
             array.add(person);
             return array.toString();
         });
-        post("/getCalls", (req,res) -> {
-            String token = req.queryParams("token");
-            String  asd = req.queryParams("pass");
-            return "asd";
-        });
+
         post("/verify", (req,res) -> {
             Boolean m;
             String token = req.queryParams("token");
@@ -212,13 +198,3 @@ public class Main {
 
 
 }
-
-//    select avg(a1) from submit;
-//    select avg(a2) from submit;
-//    select avg(a3) from submit;
-//
-//    select count(service_id) form submit;
-//
-//    select count(a2) from submit where a2=1;
-//        select count(a4) from submit where a4=1;
-//        select count(a6) from submit where a6=1;
