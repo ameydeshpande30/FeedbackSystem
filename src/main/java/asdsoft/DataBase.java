@@ -28,6 +28,14 @@ public class DataBase {
             e.printStackTrace();
         }
     }
+    public void reset(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public LoginData check(String uname, String pass){
         LoginData ld = new LoginData();
         try {
@@ -51,10 +59,13 @@ public class DataBase {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            reset();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            reset();
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
+            reset();
         }
         ld.setToken("-2");
         return ld;
@@ -88,6 +99,7 @@ public class DataBase {
         }
         catch (Exception e) {
             e.printStackTrace();
+            reset();
         }
         return syncDataArrayList;
     }
@@ -100,6 +112,7 @@ public class DataBase {
             stmt.executeUpdate(sql);
         } catch (Exception e) {
             e.printStackTrace();
+            reset();
         }
     }
     public void addUser2(String fname, String lname, String phone , String dob, int sal, String email,String uname, String pass){
@@ -110,6 +123,7 @@ public class DataBase {
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
         } catch (Exception e) {
+            reset();
             e.printStackTrace();
         }
     }
@@ -122,6 +136,7 @@ public class DataBase {
             stmt.executeUpdate(sql);
             updatesddata(service_id);
         } catch (Exception e) {
+            reset();
             e.printStackTrace();
         }
     }
@@ -139,6 +154,7 @@ public class DataBase {
             stmt.executeUpdate(sql);
 
         } catch (SQLException e) {
+            reset();
             e.printStackTrace();
         }
     }
@@ -150,6 +166,7 @@ public class DataBase {
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
+            reset();
             e.printStackTrace();
         }
     }
@@ -165,6 +182,7 @@ public class DataBase {
             }
         }
         catch (SQLException e) {
+            reset();
             e.printStackTrace();
         }
         return a;
